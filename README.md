@@ -56,7 +56,7 @@ It will be very clear after we break down it as the following steps:
 
 ## CHANGELOG
 
-### v0.2.0 (Apr 2018)
+### v0.4.0 (Apr 2018)
 
 First publish version.
 
