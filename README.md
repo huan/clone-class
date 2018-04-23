@@ -1,4 +1,8 @@
 # CLONE CLASS
+[![NPM Version](https://badge.fury.io/js/clone-class.svg)](https://badge.fury.io/js/clone-class)
+[![Build Status](https://api.travis-ci.org/zixia/node-clone-class.svg?branch=master)](https://travis-ci.org/zixia/node-clone-class)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+
 
 Clone an ES6 Class as Another Class Name for Isolating Static Properties in the Classes.
 
@@ -13,7 +17,7 @@ $ npm i clone-class
 ### TypeScript
 
 ```ts
-import cloneClass from '../'
+import cloneClass from 'clone-class'
 
 class Employee {
   public static company: string
