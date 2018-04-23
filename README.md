@@ -45,6 +45,10 @@ employee2.info()
 
 ## CHANGELOG
 
+### v0.2.0 (Apr 2018)
+
+First publish version.
+
 ### v0.0.1 (Apr 23, 2018)
 
 Initial version, seprecated from Project Wechaty.
