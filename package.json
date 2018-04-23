@@ -43,5 +43,9 @@
     "scripts": {
       "pre-push": "./scripts/pre-push.sh"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
   }
 }
