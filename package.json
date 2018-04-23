@@ -2,16 +2,16 @@
   "name": "clone-class",
   "version": "0.0.2",
   "description": "Clone an ES6 Class as Another Class Name for Isolating Static Properties in the Classes.",
-  "main": "dist/clone-class.js",
-  "typings": "dist/clone-class.d.ts",
+  "main": "src/clone-class.js",
+  "typings": "src/clone-class.d.ts",
   "scripts": {
     "clean": "shx rm -fr dist/*",
-    "dist": "npm run clean && tsc",
+    "dist": "npm run clean && tsc && shx cp {README.md,package.json} dist/",
     "lint": "npm run lint:ts",
     "lint:ts": "npm run clean && echo tslint v`tslint --version` && tslint --project tsconfig.json \"{bin,examples,scripts,src,tests}/**/*.ts\" --exclude \"tests/fixtures/**\" --exclude \"dist/\" && tsc --noEmit",
     "test": "npm run test:unit",
     "test:unit": "blue-tape -r ts-node/register \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\"",
-    "test:pack": "npm run dist && export TMPDIR=/tmp/pack-testing.$$ && mkdir $TMPDIR && npm pack && mv *-*.*.*.tgz $TMPDIR && cp tests/fixtures/smoke-testing.js $TMPDIR && cd $TMPDIR && npm init -y && npm install *-*.*.*.tgz && node smoke-testing.js"
+    "test:pack": "npm run dist && export TMPDIR=/tmp/pack-testing.$$ && mkdir $TMPDIR && npm pack dist/ && mv *-*.*.*.tgz $TMPDIR && cp tests/fixtures/smoke-testing.js $TMPDIR && cd $TMPDIR && npm init -y && npm install *-*.*.*.tgz && node smoke-testing.js"
   },
   "repository": {
     "type": "git",

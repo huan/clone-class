@@ -2,7 +2,7 @@ const assert = require('assert')
 
 const {
   VERSION,
-  cloneClass,
+  cloneClass
 } =  require('clone-class')
 
 console.log(`VERSION v${VERSION}`)

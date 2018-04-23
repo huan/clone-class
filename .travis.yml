@@ -37,6 +37,9 @@ jobs:
         - if [ "$TRAVIS_BRANCH" = "master" -a ./scripts/development-release.ts ]; then ./scripts/package-public-config-tag-next.ts; fi
         - npm run dist
 
+      before_deploy:
+        - cd dist/
+
       deploy:
         provider: npm
         email: zixia@zixia.net

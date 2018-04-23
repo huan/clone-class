@@ -24,7 +24,7 @@ class Employee {
   }
 
   public info() {
-    console.log(`Employee ${this.name}, Company ${this.constructor.company}`)
+    console.log(`Employee ${this.name}, Company ${(this.constructor as any).company}`)
   }
 }
 
