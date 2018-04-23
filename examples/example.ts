@@ -1,5 +1,5 @@
 // tslint:disable:variable-name
-import cloneClass from '../'
+import cloneClass from '../src/clone-class'
 
 class Employee {
   public static company: string
