@@ -3,8 +3,7 @@
 [![Build Status](https://api.travis-ci.org/zixia/node-clone-class.svg?branch=master)](https://travis-ci.org/zixia/node-clone-class)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
-
-Clone an ES6 Class as Another Class Name for Isolating Static Properties in the Classes.
+Clone an ES6 Class as Another Class Name for Isolating Class Static Properties. 
 
 ## EXAMPLE
 
@@ -46,6 +45,14 @@ employee1.info()
 employee2.info()
 // Output: Employee Jerry, Company Microsoft
 ```
+
+The most tricky part of this code is `(this.constructor as any).company`.
+
+It will be very clear after we break down it as the following steps:
+
+1. `this.constructor` is the constructor function of the class, which shuold be the _class function_ itself.
+1. `company` is a static properity defined in `Employee` class, which will be set as a property on the _class function_.
+1. So `this.constructor.company` is equal to `Employee.company`, except that we will not need to know the exact name of the class, `Employee` in this case. We use this pattern is because we need to visit the _class function_ even we do not know it's name.
 
 ## CHANGELOG
 
