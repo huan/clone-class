@@ -80,6 +80,3 @@ First publish version.
 * Code & Docs © 2018 Huan LI \<zixia@zixia.net\>
 * Code released under the Apache-2.0 License
 * Docs released under Creative Commons
-
-[downloads-image]: http://img.shields.io/npm/dm/wechaty.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/wechaty
