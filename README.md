@@ -64,7 +64,7 @@ First publish version.
 
 ### v0.0.1 (Apr 23, 2018)
 
-* Initial version, code comes from Project [Wechaty](https://github.com/Chatie/wechaty/].
+* Initial version, code comes from Project [Wechaty](https://github.com/Chatie/wechaty/).
 * Learn more about the full story at Chatie blog: [New Feature: Multi-Instance Support for Wechaty v0.16(WIP)](https://blog.chatie.io/blessed-twins-bot/)
 
 ## AUTHOR
