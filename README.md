@@ -70,7 +70,11 @@ Learn more about the full story at Chatie blog: [New Feature: Multi-Instance Sup
 
 ## SEE ALSO
 
-An UseCase of `clone-class` can be found at Chatie blog <git@github.com:zixia/node-clone-class.git>. It's also the place where this module comes from.
+An UseCase of `clone-class` can be found on a blog article writen by me from Chatie blog:
+
+* [New Feature: Multi-Instance Support for Wechaty v0.16(WIP)](https://blog.chatie.io/blessed-twins-bot/)
+
+It's the place where this module comes from, worth to spent some time to have a look if you are interested.
 
 ## AUTHOR
 
