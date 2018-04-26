@@ -51,6 +51,8 @@ test('cloneClass smoke testing', async t => {
   // tslint:disable-next-line:variable-name
   const NewClass2 = cloneClass(FixtureClass)
 
+  t.ok(NewClass1.prototype instanceof FixtureClass, 'should extend right')
+
   t.notEqual(NewClass1, NewClass2,    'NewClass1 should different with NewClass2')
   t.notEqual(NewClass1, FixtureClass, 'NewClass1 should different with FixtureClass')
 
