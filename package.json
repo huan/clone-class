@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "shx rm -fr dist/*",
     "dist": "npm run clean && tsc && shx cp {README.md,package.json} dist/",
+    "example": "ts-node examples/example.ts",
     "lint": "npm run lint:ts",
     "lint:ts": "npm run clean && echo tslint v`tslint --version` && tslint --project tsconfig.json \"{bin,examples,scripts,src,tests}/**/*.ts\" --exclude \"tests/fixtures/**\" --exclude \"dist/\" && tsc --noEmit",
     "test": "npm run test:unit",

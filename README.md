@@ -9,16 +9,26 @@ Clone an ES6 Class as Another Class Name for Isolating Class Static Properties.
 
 ## EXAMPLE
 
-### Shell
+Run the following example by:
 
 ```shell
-$ npm i clone-class
+$ git clone git@github.com:zixia/node-clone-class.git
+$ cd node-clone-class
+$ npm install
+$ npm run example
 ```
 
 ### TypeScript
 
+See: <https://github.com/zixia/node-clone-class/blob/master/examples/example.ts>
+
 ```ts
-import cloneClass from 'clone-class'
+import * as assert from 'assert'
+
+import {
+  cloneClass,
+  instanceToClass,
+}                   from '../src/clone-class'
 
 class Employee {
   public static company: string
@@ -33,19 +43,33 @@ class Employee {
   }
 }
 
+/**
+ * Example 1: `cloneClass()`
+ */
 const GoogleEmployee = cloneClass(Employee)
 GoogleEmployee.company = 'Google'
 
 const MicrosoftEmployee = cloneClass(Employee)
 MicrosoftEmployee.company = 'Microsoft'
 
-const employee1 = new GoogleEmployee('Tom')
-const employee2 = new MicrosoftEmployee('Jerry')
+const employeeGg = new GoogleEmployee('Tom')
+const employeeMs = new MicrosoftEmployee('Jerry')
 
-employee1.info()
+employeeGg.info()
 // Output: Employee Tom, Company Google
-employee2.info()
+employeeMs.info()
 // Output: Employee Jerry, Company Microsoft
+
+/**
+ * Example 2: `instanceToClass()`
+ */
+const RestoreGoogleEmployee = instanceToClass(employeeGg, Employee)
+assert(RestoreGoogleEmployee === GoogleEmployee, 'Should get back the Class which instanciated the instance)
+assert(RestoreGoogleEmployee !== Employee, 'Should be different with the parent Class')
+
+const anotherEmployee = new RestoreGoogleEmployee('Mary')
+anotherEmployee.info()
+// Output: Employee Mary, Company Google
 ```
 
 The most tricky part of this code is `(this.constructor as any).company`.
@@ -56,11 +80,38 @@ It will be very clear after we break down it as the following steps:
 1. `company` is a static properity defined in `Employee` class, which will be set as a property on the _class function_.
 1. So `this.constructor.company` is equal to `Employee.company`, except that we will not need to know the exact name of the class, `Employee` in this case. We use this pattern is because we need to visit the _class function_ even we do not know it's name.
 
+## API
+
+We have two APIs for dealing with the classes:
+
+1. `cloneClass(OriginalClass)`: create a new Class that is `extend` from the `OriginalClass` which can isolate static properties for stored values, and return the new Class. 
+1. `instanceToClass(instance, BaseClass)`: get the Class which had instanciated the `instance`, which is the `BaseClass`, or the child class of `BaseClass`, and return it.
+
+### `cloneClass()`
+
+```ts
+const AnotherClass = cloneClass(OrignalClass)
+const instance = new AnotherClass()
+```
+
+### `instanceToClass()`
+
+```ts
+const RestoredClass = instanceToClass(instance, OrignalClass)
+assert(RestoredClass === AnotherClass, 'because `instance` was created by `new AnotherClass()`')
+```
+
 ## CHANGELOG
+
+### v0.6.0 (May 2018)
+
+1. add new function: `instanceToClass()` for getting back the `Class` from an existing `instance`.
 
 ### v0.4.0 (Apr 2018)
 
 First publish version.
+
+1. `cloneClass()` work as expected.
 
 ### v0.0.1 (Apr 23, 2018)
 
@@ -70,11 +121,13 @@ Learn more about the full story at Chatie blog: [New Feature: Multi-Instance Sup
 
 ## SEE ALSO
 
-An UseCase of `clone-class` can be found on a blog article writen by me from Chatie blog:
+An UseCase of `clone-class` can be found in an article writen by me from Chatie blog, it's also the place where this module comes from. It's Worth to spent some time to have a look if you are interested.
 
 * [New Feature: Multi-Instance Support for Wechaty v0.16(WIP)](https://blog.chatie.io/blessed-twins-bot/)
 
-It's the place where this module comes from, worth to spent some time to have a look if you are interested.
+* [TypeScript 2.1 keyof and Lookup Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html)
+* [TypeScript Evolution](https://blog.mariusschulz.com/series/typescript-evolution)
+* [TypeScript Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
 ## AUTHOR
 

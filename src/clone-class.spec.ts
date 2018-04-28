@@ -21,7 +21,10 @@
 import * as test  from 'blue-tape'
 // import * as sinon from 'sinon'
 
-import cloneClass  from './clone-class'
+import {
+  cloneClass,
+  instanceToClass,
+}                   from './clone-class'
 
 class FixtureClass {
   public static staticNumber: number
@@ -70,4 +73,17 @@ test('cloneClass smoke testing', async t => {
 
   t.equal(nc1.sum(), EXPECTED_NUMBER1 + EXPECTED_NUMBER1 + EXPECTED_NUMBER2, 'should sum right for 1 + 1 + 2')
   t.equal(nc2.sum(), EXPECTED_NUMBER2 + EXPECTED_NUMBER1 + EXPECTED_NUMBER2, 'should sum right for 2 + 1 + 2')
+})
+
+test('instanceToClass smoke testing', async t => {
+  const instance = new FixtureClass(1, 2)
+  // tslint:disable-next-line:variable-name
+  const SameFixtureClass = instanceToClass(instance, FixtureClass)
+  t.equal(SameFixtureClass, FixtureClass, 'should get back the same Class for its own instance')
+
+  class ChildFixtureClass extends FixtureClass {}
+  const anotherInstance = new ChildFixtureClass(3, 4)
+  // tslint:disable-next-line:variable-name
+  const AnotherFixtureClass = instanceToClass(anotherInstance, FixtureClass)
+  t.notEqual(AnotherFixtureClass, FixtureClass, 'should get back another Class for instance from its child class')
 })

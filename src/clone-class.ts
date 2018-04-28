@@ -11,9 +11,9 @@ export const VERSION = require('../package.json').version as string
 export type Constructor<T> = new(...args: any[]) => T
 
 // tslint:disable-next-line:variable-name
-export function cloneClass<T extends Constructor<{}>>(OrignalClass: T): T {
+export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
 
-  class NewClass extends OrignalClass {
+  class NewClass extends OriginalClass {
     constructor(...args: any[]) {
       super(...arguments)
     }
@@ -21,4 +21,12 @@ export function cloneClass<T extends Constructor<{}>>(OrignalClass: T): T {
   return NewClass
 }
 
-export default cloneClass
+// // https://stackoverflow.com/a/38311757/1123955
+// export type ClassConstructor<T> = {
+//   // new(): T
+//   [P in keyof typeof T]: (typeof T)[P]
+// }
+
+export function instanceToClass<T, C>(instance: T, baseClass: C): C {
+  return instance.constructor as any as C
+}

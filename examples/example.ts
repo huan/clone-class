@@ -1,5 +1,10 @@
 // tslint:disable:variable-name
-import cloneClass from '../src/clone-class'
+import * as assert from 'assert'
+
+import {
+  cloneClass,
+  instanceToClass,
+}                   from '../src/clone-class'
 
 class Employee {
   public static company: string
@@ -14,16 +19,34 @@ class Employee {
   }
 }
 
+console.log(`
+# Example 1: cloneClass()
+`)
+
 const GoogleEmployee = cloneClass(Employee)
 GoogleEmployee.company = 'Google'
 
 const MicrosoftEmployee = cloneClass(Employee)
 MicrosoftEmployee.company = 'Microsoft'
 
-const employee1 = new GoogleEmployee('Tom')
-const employee2 = new MicrosoftEmployee('Jerry')
+const employeeGg = new GoogleEmployee('Tom')
+const employeeMs = new MicrosoftEmployee('Jerry')
 
-employee1.info()
+employeeGg.info()
 // Output: Employee Tom, Company Google
-employee2.info()
+employeeMs.info()
 // Output: Employee Jerry, Company Microsoft
+
+console.log(`
+# Example 2: instanceToClass()
+`)
+
+const RestoreGoogleEmployee = instanceToClass(employeeGg, Employee)
+assert(RestoreGoogleEmployee === GoogleEmployee, 'Should get back the Class which instanciated the instance')
+assert(RestoreGoogleEmployee !== Employee, 'Should be different with the parent Class')
+
+const anotherEmployee = new RestoreGoogleEmployee('Mary')
+anotherEmployee.info()
+// Output: Employee Mary, Company Google
+
+console.log()
