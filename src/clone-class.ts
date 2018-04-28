@@ -30,3 +30,5 @@ export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
 export function instanceToClass<T, C>(instance: T, baseClass: C): C {
   return instance.constructor as any as C
 }
+
+export default cloneClass

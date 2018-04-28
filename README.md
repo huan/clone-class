@@ -20,7 +20,7 @@ $ npm run example
 
 ### TypeScript
 
-See: <https://github.com/zixia/node-clone-class/blob/master/examples/example.ts>
+**[Example Source Code](https://github.com/zixia/node-clone-class/blob/master/examples/example.ts):**
 
 ```ts
 import * as assert from 'assert'
