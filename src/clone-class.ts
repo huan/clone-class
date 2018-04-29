@@ -18,6 +18,9 @@ export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
       super(...arguments)
     }
   }
+  Reflect.defineProperty(NewClass, 'name', {
+    value: OriginalClass.name,
+  })
   return NewClass
 }
 

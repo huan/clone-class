@@ -18,6 +18,8 @@
  *
  */
 // tslint:disable:no-shadowed-variable
+// tslint:disable:variable-name
+
 import * as test  from 'blue-tape'
 // import * as sinon from 'sinon'
 
@@ -49,9 +51,7 @@ const EXPECTED_NUMBER1 = 1
 const EXPECTED_NUMBER2 = 2
 
 test('cloneClass smoke testing', async t => {
-  // tslint:disable-next-line:variable-name
   const NewClass1 = cloneClass(FixtureClass)
-  // tslint:disable-next-line:variable-name
   const NewClass2 = cloneClass(FixtureClass)
 
   t.ok(NewClass1.prototype instanceof FixtureClass, 'should extend right')
@@ -75,15 +75,18 @@ test('cloneClass smoke testing', async t => {
   t.equal(nc2.sum(), EXPECTED_NUMBER2 + EXPECTED_NUMBER1 + EXPECTED_NUMBER2, 'should sum right for 2 + 1 + 2')
 })
 
+test('cloneClass return NewClass with Original Name', async t => {
+  const NewClass = cloneClass(FixtureClass)
+  t.equal(NewClass.name, FixtureClass.name, 'should clone the same name for Class')
+})
+
 test('instanceToClass smoke testing', async t => {
   const instance = new FixtureClass(1, 2)
-  // tslint:disable-next-line:variable-name
   const SameFixtureClass = instanceToClass(instance, FixtureClass)
   t.equal(SameFixtureClass, FixtureClass, 'should get back the same Class for its own instance')
 
   class ChildFixtureClass extends FixtureClass {}
   const anotherInstance = new ChildFixtureClass(3, 4)
-  // tslint:disable-next-line:variable-name
   const AnotherFixtureClass = instanceToClass(anotherInstance, FixtureClass)
   t.notEqual(AnotherFixtureClass, FixtureClass, 'should get back another Class for instance from its child class')
 })
