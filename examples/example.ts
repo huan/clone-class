@@ -4,7 +4,7 @@ import * as assert from 'assert'
 import {
   cloneClass,
   instanceToClass,
-}                   from '../src/clone-class'
+}                   from '../src/'
 
 class Employee {
   public static company: string
