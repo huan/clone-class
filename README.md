@@ -101,6 +101,15 @@ const RestoredClass = instanceToClass(instance, OrignalClass)
 assert(RestoredClass === AnotherClass, 'because `instance` was created by `new AnotherClass()`')
 ```
 
+### `Constructor<T>`
+
+```ts
+const NewableClass: typeof AbstractClass & Constructor<AbstractClass>
+const instance = new NewableClass()
+```
+
+It seems useless at first, but if you want to use manage many Child Class for a Abstract Class with typings, then it will be a must have tool.
+
 ## CHANGELOG
 
 ### v0.6.0 (May 2018)
