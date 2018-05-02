@@ -17,40 +17,19 @@
  *   limitations under the License.
  *
  */
-// tslint:disable:no-shadowed-variable
 // tslint:disable:variable-name
 
 import * as test  from 'blue-tape'
 // import * as sinon from 'sinon'
 
-import {
-  cloneClass,
-  instanceToClass,
-}                   from './clone-class'
+import cloneClass       from './clone-class'
 
-class FixtureClass {
-  public static staticNumber: number
-
-  public static staticMethod(n: number) {
-    this.staticNumber = n
-  }
-
-  constructor(
-    public i: number,
-    public j: number,
-  ) {
-    //
-  }
-
-  public sum() {
-    return this.i + this.j + (this.constructor as any).staticNumber
-  }
-}
-
-const EXPECTED_NUMBER1 = 1
-const EXPECTED_NUMBER2 = 2
+import FixtureClass from '../tests/fixtures/fixture-class'
 
 test('cloneClass smoke testing', async t => {
+  const EXPECTED_NUMBER1 = 1
+  const EXPECTED_NUMBER2 = 2
+
   const NewClass1 = cloneClass(FixtureClass)
   const NewClass2 = cloneClass(FixtureClass)
 
@@ -78,15 +57,4 @@ test('cloneClass smoke testing', async t => {
 test('cloneClass return NewClass with Original Name', async t => {
   const NewClass = cloneClass(FixtureClass)
   t.equal(NewClass.name, FixtureClass.name, 'should clone the same name for Class')
-})
-
-test('instanceToClass smoke testing', async t => {
-  const instance = new FixtureClass(1, 2)
-  const SameFixtureClass = instanceToClass(instance, FixtureClass)
-  t.equal(SameFixtureClass, FixtureClass, 'should get back the same Class for its own instance')
-
-  class ChildFixtureClass extends FixtureClass {}
-  const anotherInstance = new ChildFixtureClass(3, 4)
-  const AnotherFixtureClass = instanceToClass(anotherInstance, FixtureClass)
-  t.notEqual(AnotherFixtureClass, FixtureClass, 'should get back another Class for instance from its child class')
 })

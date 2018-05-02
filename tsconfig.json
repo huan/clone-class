@@ -13,13 +13,12 @@
     , "noFallthroughCasesInSwitch": true
     , "strictNullChecks": true
 
-    , "noImplicitAny": false
-    , "noUnusedParameters": false
-    , "noImplicitThis": false
+    , "noImplicitAny": true
+    , "noUnusedParameters": true
+    , "noImplicitThis": true
     , "traceResolution": false
     , "lib": [
         "esnext"
-      , "dom"
     ]
   }
   , "exclude": [
