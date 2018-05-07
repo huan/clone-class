@@ -112,12 +112,12 @@ It seems useless at first, but if you want to use manage many Child Class for a 
 
 ## CHANGELOG
 
-### v0.6.0 (May 2018)
+### v0.6 (May 2018)
 
 1. add new function: `instanceToClass()` for getting back the `Class` from an existing `instance`.
 1. add new type: `Constructor<T>` for adding `new (): T` to abstract class declaration.
 
-### v0.4.0 (Apr 2018)
+### v0.4 (Apr 2018)
 
 First publish version.
 
