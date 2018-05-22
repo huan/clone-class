@@ -5,6 +5,8 @@
 [![Build Status](https://api.travis-ci.org/zixia/node-clone-class.svg?branch=master)](https://travis-ci.org/zixia/node-clone-class)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
+![Clone Class](https://zixia.github.io/node-clone-class/images/clone-class-logo.png)
+
 Clone an ES6 Class as Another Class Name for Isolating Class Static Properties. 
 
 ## EXAMPLE
