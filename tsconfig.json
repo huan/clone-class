@@ -5,17 +5,17 @@
     , "outDir": "dist"
     , "declaration": true
     , "sourceMap": true
-    , "noLib": false
 
     , "noEmitOnError": true
     , "noUnusedLocals": true
     , "noImplicitReturns": true
     , "noFallthroughCasesInSwitch": true
     , "strictNullChecks": true
-
     , "noImplicitAny": true
     , "noUnusedParameters": true
     , "noImplicitThis": true
+
+    , "noLib": false
     , "traceResolution": false
     , "lib": [
         "esnext"
@@ -24,6 +24,7 @@
   , "exclude": [
       "node_modules/"
     , "dist/"
+    , "tests/fixtures/"
   ]
   , "include": [
        "*.ts"
