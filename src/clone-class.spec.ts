@@ -59,28 +59,10 @@ test('cloneClass return NewClass with Original Name', async t => {
   t.equal(NewClass.name, FixtureClass.name, 'should clone the same name for Class')
 })
 
-test('static properties should be isolated', async t => {
-  class Fixture {
-    public static mol = 42
-
-    public static load(): number {
-      return this.mol
-    }
-
-    public static save(n: number): void {
-      this.mol = n
-    }
+test('throw error when static property initilized with defination', async t => {
+  class Test {
+    public static n = {mof: 42}
   }
 
-  const C1 = cloneClass(Fixture)
-  const C2 = cloneClass(Fixture)
-
-  t.equal(C1.load(), 42, 'should be 42 by default')
-
-  C1.save(17)
-  t.equal(C1.load(), 17, 'should be 17 after set')
-  t.equal(C2.load(), 42, 'should be 42 by default no mater than what value C1.mol is')
-
-  t.notEqual(C1.mol, C2.mol, 'should not equal after cloneClass')
+  t.throws(() => cloneClass(Test), 'should throw when the static property initialized with a object in defination')
 })
-
