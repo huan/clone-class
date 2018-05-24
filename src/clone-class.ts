@@ -9,6 +9,13 @@ import Constructor from './constructor'
 export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
 
   for (const staticProperty in OriginalClass) {
+    if (/^[A-Z]/.test(staticProperty)) {
+      /**
+       * Skip the name with a captial letter,
+       * like: Type
+       */
+      continue
+    }
     if (typeof OriginalClass[staticProperty] === 'object') {
       throw new Error('static property initialized to an object with defination is not supported with cloneClass.')
     }

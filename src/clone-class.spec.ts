@@ -59,10 +59,18 @@ test('cloneClass return NewClass with Original Name', async t => {
   t.equal(NewClass.name, FixtureClass.name, 'should clone the same name for Class')
 })
 
-test('throw error when static property initilized with defination', async t => {
+test('throw error when lowercase static property initilized with defination', async t => {
   class Test {
     public static n = {mof: 42}
   }
 
   t.throws(() => cloneClass(Test), 'should throw when the static property initialized with a object in defination')
+})
+
+test('permit static property start with a captial letter to be initilized with defination', async t => {
+  class Test {
+    public static Data = {mof: 42}
+  }
+
+  t.doesNotThrow(() => cloneClass(Test), 'should not throw when the static property start with a captial letter that initialized with a object in defination')
 })
