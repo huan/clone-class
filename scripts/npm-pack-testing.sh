@@ -4,7 +4,7 @@ set -e
 npm run dist
 # must use `dist/` instead of `dist`
 # or npm will re-pack a npm module named `dist` from npmjs.com
-npm pack dist/
+npm run pack
 
 TMPDIR="/tmp/npm-pack-testing.$$"
 mkdir "$TMPDIR"

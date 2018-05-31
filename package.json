@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "shx rm -fr dist/*",
     "dist": "npm run clean && tsc && shx cp {README.md,package.json} dist/",
+    "pack": "npm run pack dist/",
     "example": "ts-node examples/example.ts",
     "lint": "npm run lint:ts",
     "lint:ts": "tslint --project tsconfig.json && tsc --noEmit",
