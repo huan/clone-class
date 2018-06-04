@@ -1,6 +1,6 @@
 {
   "name": "clone-class",
-  "version": "0.6.15",
+  "version": "0.6.16",
   "description": "Clone an ES6 Class as Another Class Name for Isolating Class Static Properties.",
   "main": "src/index.js",
   "typings": "src/index.d.ts",
