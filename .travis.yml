@@ -10,6 +10,13 @@ cache:
   directories:
     - node_modules
 
+script:
+  - echo $TRAVIS_OS_NAME
+  - node --version
+  - npm --version
+  - echo "Testing started ..."
+  - npm test || travis_terminate 1
+
 stages:
   - test
   - pack
@@ -19,14 +26,6 @@ stages:
 
 jobs:
   include:
-    - stage: test
-      script:
-        - echo $TRAVIS_OS_NAME
-        - node --version
-        - npm --version
-        - echo "Testing started ..."
-        - npm test || travis_terminate 1
-
     - stage: pack
       script:
         - npm run test:pack && echo 'Npm pack testing is passed'
