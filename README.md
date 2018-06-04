@@ -1,11 +1,11 @@
 # CLONE CLASS
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/zixia/node-clone-class.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/zixia/clone-class.svg)](https://greenkeeper.io/)
 [![NPM Version](https://badge.fury.io/js/clone-class.svg)](https://badge.fury.io/js/clone-class)
-[![Build Status](https://api.travis-ci.org/zixia/node-clone-class.svg?branch=master)](https://travis-ci.org/zixia/node-clone-class)
+[![Build Status](https://api.travis-ci.org/zixia/clone-class.svg?branch=master)](https://travis-ci.org/zixia/clone-class)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
-![Clone Class](https://zixia.github.io/node-clone-class/images/clone-class-logo.png)
+![Clone Class](https://zixia.github.io/clone-class/images/clone-class-logo.png)
 
 Clone an ES6 Class as Another Class Name for Isolating Class Static Properties. 
 
@@ -14,15 +14,15 @@ Clone an ES6 Class as Another Class Name for Isolating Class Static Properties.
 Run the following example by:
 
 ```shell
-$ git clone git@github.com:zixia/node-clone-class.git
-$ cd node-clone-class
+$ git clone git@github.com:zixia/clone-class.git
+$ cd clone-class
 $ npm install
 $ npm run example
 ```
 
 ### TypeScript
 
-**[Example Source Code](https://github.com/zixia/node-clone-class/blob/master/examples/example.ts):**
+**[Example Source Code](https://github.com/zixia/clone-class/blob/master/examples/example.ts):**
 
 ```ts
 import * as assert from 'assert'
