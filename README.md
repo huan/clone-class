@@ -2,7 +2,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/zixia/clone-class.svg)](https://greenkeeper.io/)
 [![NPM Version](https://badge.fury.io/js/clone-class.svg)](https://badge.fury.io/js/clone-class)
-[![Build Status](https://api.travis-ci.org/zixia/clone-class.svg?branch=master)](https://travis-ci.org/zixia/clone-class)
+[![Build Status](https://api.travis-ci.com/zixia/clone-class.svg?branch=master)](https://travis-ci.com/zixia/clone-class)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
 ![Clone Class](https://zixia.github.io/clone-class/images/clone-class-logo.png)
