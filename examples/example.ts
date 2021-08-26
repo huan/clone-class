@@ -1,3 +1,4 @@
+// eslint disable lowerCamelCase
 import assert from 'assert'
 
 import {

@@ -6,7 +6,7 @@
 import Constructor from './constructor.js'
 
 // tslint:disable-next-line:variable-name
-export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
+export function cloneClass<T extends Constructor<{}>> (OriginalClass: T): T {
 
   for (const staticProperty in OriginalClass) {
     /**
@@ -26,9 +26,11 @@ export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
   }
 
   class AnotherOriginalClass extends OriginalClass {
-    constructor(...args: any[]) {
+
+    constructor (...args: any[]) {
       super(...args)
     }
+
   }
 
   Reflect.defineProperty(AnotherOriginalClass, 'name', {
