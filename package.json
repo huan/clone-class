@@ -53,6 +53,10 @@
     "access": "public",
     "tag": "latest"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "git": {
     "scripts": {
       "pre-push": "npx git-scripts-pre-push"
