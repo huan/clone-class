@@ -1,9 +1,9 @@
-const assert = require('assert')
+import assert from 'assert'
 
-const {
+import {
   VERSION,
   cloneClass
-} =  require('clone-class')
+} from          'clone-class'
 
 console.log(`VERSION v${VERSION}`)
 
