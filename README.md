@@ -114,6 +114,11 @@ It seems useless at first, but if you want to use manage many Child Class for a 
 
 ## CHANGELOG
 
+### master v0.9 (Aug 26, 2021)
+
+1. ESM Support
+2. GitHub Action enabled
+
 ### v0.6 (May 2018)
 
 1. add new function: `instanceToClass()` for getting back the `Class` from an existing `instance`.
