@@ -19,12 +19,12 @@
  */
 // tslint:disable:variable-name
 
-import * as test  from 'blue-tape'
+import { test } from 'tstest'
 // import * as sinon from 'sinon'
 
-import cloneClass       from './clone-class'
+import cloneClass       from './clone-class.js'
 
-import FixtureClass from '../tests/fixtures/fixture-class'
+import FixtureClass from '../tests/fixtures/fixture-class.js'
 
 test('cloneClass smoke testing', async t => {
   const EXPECTED_NUMBER1 = 1

@@ -1,4 +1,4 @@
-import { Constructor } from './constructor'
+import { Constructor } from './constructor.js'
 
 export function instanceToClass<
   T extends Constructor<{}>,
@@ -7,7 +7,7 @@ export function instanceToClass<
   instance: InstanceType<T>,
   baseClass: C,
 ): C {
-  return instance.constructor as any as (typeof baseClass /* C */ )
+  return instance.constructor as any as (typeof baseClass /* C */)
 }
 
 export default instanceToClass

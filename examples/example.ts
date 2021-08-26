@@ -4,22 +4,24 @@ import * as assert from 'assert'
 import {
   cloneClass,
   instanceToClass,
-}                   from '../src/'
+}                   from '../src/mod'
 
 class Employee {
+
   public static company: string
 
-  constructor(
+  constructor (
     public name: string,
   ) {
   }
 
-  public info() {
-    console.log(`Employee ${this.name}, Company ${(this.constructor as any).company}`)
+  public info () {
+    console.info(`Employee ${this.name}, Company ${(this.constructor as any).company}`)
   }
+
 }
 
-console.log(`
+console.info(`
 # Example 1: cloneClass()
 `)
 
@@ -37,7 +39,7 @@ employeeGg.info()
 employeeMs.info()
 // Output: Employee Jerry, Company Microsoft
 
-console.log(`
+console.info(`
 # Example 2: instanceToClass()
 `)
 
@@ -49,4 +51,4 @@ const anotherEmployee = new RestoreGoogleEmployee('Mary')
 anotherEmployee.info()
 // Output: Employee Mary, Company Google
 
-console.log()
+console.info()

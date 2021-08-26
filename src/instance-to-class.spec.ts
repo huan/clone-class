@@ -1,10 +1,10 @@
 // tslint:disable:variable-name
 
-import * as test  from 'blue-tape'
+import { test } from 'tstest'
 
-import instanceToClass  from './instance-to-class'
+import instanceToClass  from './instance-to-class.js'
 
-import FixtureClass from '../tests/fixtures/fixture-class'
+import FixtureClass from '../tests/fixtures/fixture-class.js'
 
 test('instanceToClass smoke testing', async t => {
   const instance = new FixtureClass(1, 2)

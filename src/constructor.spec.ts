@@ -1,8 +1,8 @@
-import * as test  from 'blue-tape'
+import { test } from 'tstest'
 
-import FixtureClass from '../tests/fixtures/fixture-class'
+import FixtureClass from '../tests/fixtures/fixture-class.js'
 
-import Constructor from './constructor'
+import Constructor from './constructor.js'
 
 test('Constructor<TYPE> smoke testing', async t => {
   type TYPE = typeof FixtureClass & Constructor<FixtureClass>

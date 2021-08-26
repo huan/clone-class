@@ -3,7 +3,7 @@
  * Clone Class for easy savig Information into Static Properties
  * https://github.com/Chatie/wechaty/issues/518
  */
-import Constructor from './constructor'
+import Constructor from './constructor.js'
 
 // tslint:disable-next-line:variable-name
 export function cloneClass<T extends Constructor<{}>>(OriginalClass: T): T {
