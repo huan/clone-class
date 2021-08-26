@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env node --loader ts-node/esm
 /**
  *   Wechaty - https://github.com/chatie/wechaty
  *
@@ -35,8 +35,8 @@ test('cloneClass smoke testing', async t => {
 
   t.ok(NewClass1.prototype instanceof FixtureClass, 'should extend right')
 
-  t.notEqual(NewClass1, NewClass2,    'NewClass1 should different with NewClass2')
-  t.notEqual(NewClass1, FixtureClass, 'NewClass1 should different with FixtureClass')
+  t.not(NewClass1, NewClass2,    'NewClass1 should different with NewClass2')
+  t.not(NewClass1, FixtureClass, 'NewClass1 should different with FixtureClass')
 
   NewClass1.staticMethod(EXPECTED_NUMBER1)
   t.equal(NewClass1.staticNumber, EXPECTED_NUMBER1, 'should set static number to EXPECTED_NUMBER1')
@@ -61,7 +61,9 @@ test('cloneClass return NewClass with Original Name', async t => {
 
 test('throw error when lowercase static property initilized with defination', async t => {
   class Test {
-    public static n = {mof: 42}
+
+    public static n = { mof: 42 }
+
   }
 
   t.throws(() => cloneClass(Test), 'should throw when the static property initialized with a object in defination')
@@ -69,7 +71,9 @@ test('throw error when lowercase static property initilized with defination', as
 
 test('permit static property start with a captial letter to be initilized with defination', async t => {
   class Test {
-    public static Data = {mof: 42}
+
+    public static Data = { mof: 42 }
+
   }
 
   t.doesNotThrow(() => cloneClass(Test), 'should not throw when the static property start with a captial letter that initialized with a object in defination')

@@ -12,8 +12,7 @@ test('Constructor<TYPE> smoke testing', async t => {
    * Make sure that `PROTOTYPE` is equal to `typeof FixtureClass`
    * See also: https://stackoverflow.com/a/50116912/1123955
    */
-  let instance: PROTOTYPE
-  instance = new FixtureClass(1, 2)
+  const instance: PROTOTYPE = new FixtureClass(1, 2)
 
   t.equal(instance.sum(), 3, 'should sum right for 1 + 2')
 })

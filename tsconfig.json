@@ -1,40 +1,23 @@
 {
+  "extends": "@chatie/tsconfig",
   "compilerOptions": {
     "outDir": "dist/esm",
     "target": "es2020",
     "module": "es2020",
     "moduleResolution": "node",
-    "declaration": true,
-    "sourceMap": true,
-
-    "noEmitOnError": true,
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noUnusedParameters": true,
-    "noImplicitThis": true,
-
-    "noLib": false,
-    "traceResolution": false,
-    "lib": [
-        "esnext"
-    ]
-  }
-  , "exclude": [
-      "node_modules/"
-    , "dist/"
-    , "tests/fixtures/"
-  ]
-  , "include": [
-       "*.ts"
-     , "bin/*.ts"
-     , "scripts/**/*.ts"
-     , "examples/**/*.ts"
-     , "src/**/*.ts"
-     , "tests/**/*.spec.ts"
-     , "bot/**/*.ts"
-     , "app/**/*.ts"
-  ]
+  },
+  "exclude": [
+    "node_modules/",
+    "dist/",
+    "tests/fixtures/",
+  ],
+  "include": [
+    "app/**/*.ts",
+    "bin/*.ts",
+    "bot/**/*.ts",
+    "examples/**/*.ts",
+    "scripts/**/*.ts",
+    "src/**/*.ts",
+    "tests/**/*.spec.ts",
+  ],
 }

@@ -1,4 +1,4 @@
-// tslint:disable:variable-name
+#!/usr/bin/env node --loader ts-node/esm
 
 import { test } from 'tstest'
 
