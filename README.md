@@ -118,6 +118,7 @@ It seems useless at first, but if you want to use manage many Child Class for a 
 
 1. ESM Support
 2. GitHub Action enabled
+3. add `looseInstanceOfClass()` method to check whether two class has the same name (See ([wechaty/wechaty#2090](https://github.com/wechaty/wechaty/issues/2090)))
 
 ### v0.6 (May 2018)
 

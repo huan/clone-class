@@ -22,7 +22,7 @@
     "lint:ts": "tsc --noEmit",
     "lint:es": "eslint --ignore-pattern fixtures/ \"src/**/*.ts\" \"tests/**/*.ts\"",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "tap --node-arg=--loader=ts-node/esm \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
+    "test:unit": "tap --node-arg=--no-warnings --node-arg=--loader=ts-node/esm \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
     "test:pack": "bash -x scripts/npm-pack-testing.sh"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "@chatie/eslint-config": "^0.13.5",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^0.17.2",
+    "file-box": "^0.16.8",
     "semver": "^7.3.2",
     "shx": "^0.3.0",
     "tstest": "^0.5.16",
