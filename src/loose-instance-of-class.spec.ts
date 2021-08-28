@@ -70,3 +70,27 @@ test('looseInstanceOfClass for FileBox', async t => {
     t.ok(looseInstanceOfFileBox(f), 'should be true for looseInstanceOfFileBox because the class has the same name')
   }
 })
+
+test('looseInstanceOfClass for child class', async t => {
+  class Test {}
+  class ChildTest extends Test {}
+  const looseInstanceOfTest = looseInstanceOfClass(Test)
+
+  const c = new ChildTest()
+  t.ok(looseInstanceOfTest(c), 'should be true for looseInstanceOfTest for the child class insteance')
+})
+
+test('looseInstanceOfClass for two same name parent class, with a child class', async t => {
+  class Puppet {}
+  const OrigPuppet = Puppet
+  const looseInstanceOfPuppet = looseInstanceOfClass(OrigPuppet)
+
+  {
+    class Puppet {}
+    class ChildPuppet extends Puppet {}
+
+    const c = new ChildPuppet()
+    t.notOk(c instanceof OrigPuppet, 'c is not a Puppet instance')
+    t.ok(looseInstanceOfPuppet(c), 'should be true for looseInstanceOfPuppet for the child class instance to another parent class')
+  }
+})
