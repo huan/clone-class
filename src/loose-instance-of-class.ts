@@ -8,18 +8,37 @@
 
 function looseInstanceOfClass<T extends { new (...args: any): any }> (klass: T) {
   return (o: any): o is InstanceType<T> => {
+    if (!(o && o.constructor)) {
+      /**
+       * Not a class?
+       */
+      return false
+    }
+
     if (o instanceof klass) {
       /**
        * Singleton Module
        */
       return true
-    } else if (o && o.constructor && o.constructor.name === klass.name) {
+    }
+
+    if (o.constructor.name === klass.name) {
       /**
        * Different Module Class with the same name
        *  with a direct instance class
        */
       return true
-    } else if (o && o.constructor && Reflect.getPrototypeOf(o.constructor.prototype)?.constructor.name === klass.name) {
+    }
+
+    const parent = Reflect.getPrototypeOf(o.constructor.prototype)
+    if (!parent) {
+      /**
+       * No parent class
+       */
+      return false
+    }
+
+    if (parent.constructor.name === klass.name) {
       /**
        * Different Module class with the same name
        *  but the instance is a child class
@@ -27,6 +46,9 @@ function looseInstanceOfClass<T extends { new (...args: any): any }> (klass: T) 
       return true
     }
 
+    /**
+     * Not match any of the above
+     */
     return false
   }
 }
