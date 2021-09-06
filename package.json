@@ -44,7 +44,7 @@
   "devDependencies": {
     "@chatie/eslint-config": "^0.13.5",
     "@chatie/git-scripts": "^0.6.2",
-    "@chatie/tsconfig": "^0.17.2",
+    "@chatie/tsconfig": "^0.20.2",
     "file-box": "^0.16.8",
     "semver": "^7.3.2",
     "shx": "^0.3.0",
