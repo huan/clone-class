@@ -4,6 +4,7 @@
 [![NPM Version](https://badge.fury.io/js/clone-class.svg)](https://badge.fury.io/js/clone-class)
 [![Build Status](https://api.travis-ci.com/huan/clone-class.svg?branch=master)](https://travis-ci.com/huan/clone-class)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+[![ES Modules](https://img.shields.io/badge/ES-Modules-brightgreen)](https://github.com/Chatie/tsconfig/issues/16)
 
 ![Clone Class](https://huan.github.io/clone-class/images/clone-class-logo.png)
 
