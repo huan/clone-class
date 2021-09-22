@@ -1,4 +1,4 @@
-#!/usr/bin/env node --no-warnings --loader ts-node/esm
+#!/usr/bin/env -S node --no-warnings --loader ts-node/esm
 
 /**
  *   Wechaty Chatbot SDK - https://github.com/wechaty/wechaty
@@ -93,4 +93,29 @@ test('looseInstanceOfClass for two same name parent class, with a child class', 
     t.notOk(c instanceof OrigPuppet, 'c is not a Puppet instance')
     t.ok(looseInstanceOfPuppet(c), 'should be true for looseInstanceOfPuppet for the child class instance to another parent class')
   }
+})
+
+test('looseInstanceOfClass for private constructor', async t => {
+  class PrivateConstructorClass {
+
+    static create () { return new PrivateConstructorClass() }
+    private constructor () {}
+
+  }
+
+  const looseInstanceOfPrivateConstructorClass = looseInstanceOfClass(PrivateConstructorClass)
+  const instance = PrivateConstructorClass.create()
+
+  t.ok(looseInstanceOfPrivateConstructorClass(instance), 'should be able to use private constructor class as parameter')
+})
+
+test('looseInstanceOfClass for abstract class', async t => {
+  abstract class AbstractClass {}
+
+  class ChildClass extends AbstractClass {}
+
+  const looseInstanceOfAbstractClass = looseInstanceOfClass(AbstractClass)
+  const instance = new ChildClass()
+
+  t.ok(looseInstanceOfAbstractClass(instance), 'should be able to use abstract class as parameter')
 })

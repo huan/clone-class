@@ -18,6 +18,9 @@ interface Constructor<T> {
 
 /**
  * https://github.com/wechaty/wechaty/issues/2090
+ *
+ * Warning: the InstantiatableClass returned by `constructor()` is not really instanciatable:
+ *  it's just for typing compatible for some special conditions
  */
 function constructor<T> (privateConstructor: T): Constructor<T> {
   return privateConstructor as any as Constructor<T>
