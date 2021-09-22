@@ -1,8 +1,8 @@
 import { test } from 'tstest'
 
-import FixtureClass from '../tests/fixtures/fixture-class.js'
+import { FixtureClass } from '../tests/fixtures/fixture-class.js'
 
-import Constructor from './constructor.js'
+import type { Constructor } from './constructor.js'
 
 test('Constructor<TYPE> smoke testing', async t => {
   type TYPE = typeof FixtureClass & Constructor<FixtureClass>

@@ -22,9 +22,9 @@
 import { test } from 'tstest'
 // import * as sinon from 'sinon'
 
-import cloneClass       from './clone-class.js'
+import { FixtureClass } from '../tests/fixtures/fixture-class.js'
 
-import FixtureClass from '../tests/fixtures/fixture-class.js'
+import { cloneClass }   from './clone-class.js'
 
 test('cloneClass smoke testing', async t => {
   const EXPECTED_NUMBER1 = 1

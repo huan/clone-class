@@ -1,4 +1,4 @@
-import { Constructor } from './constructor.js'
+import type { Constructor } from './constructor.js'
 
 export function instanceToClass<
   T extends Constructor<{}>,

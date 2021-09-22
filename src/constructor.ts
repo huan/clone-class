@@ -11,9 +11,21 @@
  *  https://github.com/Microsoft/TypeScript/issues/5843#issuecomment-290972055
  *  https://github.com/Microsoft/TypeScript/pull/13743
  */
-export interface Constructor<T> {
+interface Constructor<T> {
   new(...args: any[]): T,
   prototype: T,
 }
 
-export default Constructor
+/**
+ * https://github.com/wechaty/wechaty/issues/2090
+ */
+function constructor<T> (privateConstructor: T): Constructor<T> {
+  return privateConstructor as any as Constructor<T>
+}
+
+export type {
+  Constructor,
+}
+export {
+  constructor,
+}
