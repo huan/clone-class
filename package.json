@@ -11,7 +11,8 @@
   },
   "typings": "./dist/esm/src/mod.d.ts",
   "engines": {
-    "node": ">=14"
+    "node": ">=16",
+    "npm": ">=7"
   },
   "scripts": {
     "clean": "shx rm -fr dist/*",
@@ -45,10 +46,9 @@
     "@chatie/eslint-config": "^0.14.1",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^0.20.2",
-    "file-box": "^0.16.8",
-    "semver": "^7.3.2",
-    "shx": "^0.3.0",
-    "tstest": "^0.5.16"
+    "file-box": "^0.17.12",
+    "shx": "^0.3.3",
+    "tstest": "^0.7.1"
   },
   "publishConfig": {
     "access": "public",

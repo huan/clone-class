@@ -22,8 +22,8 @@ interface Constructor<T> {
  * Warning: the InstantiatableClass returned by `constructor()` is not really instanciatable:
  *  it's just for typing compatible for some special conditions
  */
-function constructor<T> (privateConstructor: T): Constructor<T> {
-  return privateConstructor as any as Constructor<T>
+function constructor<T> (ctor: T): Constructor<T> {
+  return ctor as any as Constructor<T>
 }
 
 export type {

@@ -1,4 +1,5 @@
-#!/usr/bin/env node --loader ts-node/esm
+#!/usr/bin/env -S node --no-warnings --loader ts-node/esm
+
 /**
  *   Wechaty - https://github.com/chatie/wechaty
  *
@@ -17,10 +18,8 @@
  *   limitations under the License.
  *
  */
-// tslint:disable:variable-name
 
 import { test } from 'tstest'
-// import * as sinon from 'sinon'
 
 import { FixtureClass } from '../tests/fixtures/fixture-class.js'
 
