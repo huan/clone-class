@@ -1,8 +1,14 @@
-import { test } from 'tstest'
+import {
+  test,
+  AssertEqual,
+}               from 'tstest'
 
 import { FixtureClass } from '../tests/fixtures/fixture-class.js'
 
-import type { Constructor } from './constructor.js'
+import {
+  Constructor,
+  constructor,
+}                   from './constructor.js'
 
 test('Constructor<TYPE> smoke testing', async t => {
   type TYPE = typeof FixtureClass & Constructor<FixtureClass>
@@ -15,4 +21,18 @@ test('Constructor<TYPE> smoke testing', async t => {
   const instance: PROTOTYPE = new FixtureClass(1, 2)
 
   t.equal(instance.sum(), 3, 'should sum right for 1 + 2')
+})
+
+test('constructor()', async t => {
+
+  class PrivateConstructorClass {
+
+    private constructor () {}
+
+  }
+
+  const C = constructor(PrivateConstructorClass)
+
+  const typeTest: AssertEqual<typeof C, PrivateConstructorClass> = true
+  t.ok(typeTest, 'should be same after constructor')
 })

@@ -19,7 +19,10 @@
  *   limitations under the License.
  *
  */
-import { test } from 'tstest'
+import {
+  test,
+  AssertEqual,
+}               from 'tstest'
 
 import { FileBox } from 'file-box'
 
@@ -118,4 +121,36 @@ test('looseInstanceOfClass for abstract class', async t => {
   const instance = new ChildClass()
 
   t.ok(looseInstanceOfAbstractClass(instance), 'should be able to use abstract class as parameter')
+})
+
+test('looseInstanceOfClass for type guard', async t => {
+  const box: string | FileBox = FileBox.fromQRCode('test')
+
+  const looseInstanceOfFileBox = looseInstanceOfClass(FileBox)
+  const typeTest1: AssertEqual<
+    typeof looseInstanceOfFileBox,
+    (o: any) => o is FileBox
+  > = true
+
+  t.ok(typeTest1, 'should get looseInstanceOfFileBox type guard')
+
+  if (looseInstanceOfFileBox(box)) {
+
+    const typeTest2: AssertEqual<
+      typeof box,
+      FileBox
+    > = true
+
+    t.ok(typeTest2, 'should get FileBox type guard')
+
+  } else {
+
+    const typeTest3: AssertEqual<
+      typeof box,
+      string
+    > = true
+
+    t.ok(typeTest3, 'should get string type guard')
+
+  }
 })

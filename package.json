@@ -48,7 +48,7 @@
     "file-box": "^0.16.8",
     "semver": "^7.3.2",
     "shx": "^0.3.0",
-    "tstest": "^0.5.16"
+    "tstest": "^0.7.2"
   },
   "publishConfig": {
     "access": "public",
