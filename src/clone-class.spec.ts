@@ -1,4 +1,5 @@
-#!/usr/bin/env node --loader ts-node/esm
+#!/usr/bin/env -S node --no-warnings --loader ts-node/esm
+
 /**
  *   Wechaty - https://github.com/chatie/wechaty
  *
