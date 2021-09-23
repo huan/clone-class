@@ -14,7 +14,18 @@
  *  - Types for classes as values in TypeScript
  *      https://2ality.com/2020/04/classes-as-values-typescript.html
  */
-type Constructor<T> = Function & { prototype: T }
+/**
+ * Huan(202108) version:
+ */
+interface Constructor<T> {
+  new(...args: any[]): T,
+  prototype: T,
+}
+
+/**
+ * Huan(202109) versino:
+ */
+// type Constructor<T> = Function & { prototype: T }
 
 /**
  * https://github.com/wechaty/wechaty/issues/2090
@@ -22,13 +33,7 @@ type Constructor<T> = Function & { prototype: T }
  * Warning: the InstantiatableClass returned by `constructor()` is not really instanciatable:
  *  it's just for typing compatible for some special conditions
  */
-function constructor<T> (ctor: Constructor<T>): T {
-  return ctor as any as T
-}
 
 export type {
   Constructor,
-}
-export {
-  constructor,
 }
