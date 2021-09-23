@@ -1,3 +1,5 @@
+#!/usr/bin/env -S node --no-warnings --loader ts-node/esm
+
 import {
   test,
   AssertEqual,
@@ -24,7 +26,10 @@ test('Constructor<TYPE> smoke testing', async t => {
 })
 
 test('constructor()', async t => {
-
+  /**
+   * Issue #55
+   *  https://github.com/huan/clone-class/issues/55
+   */
   class PrivateConstructorClass {
 
     private constructor () {}
