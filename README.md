@@ -90,24 +90,24 @@ We have two APIs for dealing with the classes:
 1. `cloneClass(OriginalClass)`: create a new Class that is `extend` from the `OriginalClass` which can isolate static properties for stored values, and return the new Class. 
 1. `instanceToClass(instance, BaseClass)`: get the Class which had instanciated the `instance`, which is the `BaseClass`, or the child class of `BaseClass`, and return it.
 
-### `cloneClass()`
+### 1. `cloneClass()`
 
 ```ts
 const AnotherClass = cloneClass(OrignalClass)
 const instance = new AnotherClass()
 ```
 
-### `instanceToClass()`
+### 2. `instanceToClass()`
 
 ```ts
 const RestoredClass = instanceToClass(instance, OrignalClass)
 assert(RestoredClass === AnotherClass, 'because `instance` was created by `new AnotherClass()`')
 ```
 
-### `Constructor<T>`
+### 3. `Constructor<T>`
 
 ```ts
-const NewableClass: Constructor<AbstractClass> = AbstractClass as any
+const NewableClass = AbstractClass as any as Constructor<AbstractClass>
 const instance = new NewableClass()
 ```
 
