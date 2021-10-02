@@ -107,7 +107,7 @@ assert(RestoredClass === AnotherClass, 'because `instance` was created by `new A
 ### 3. `Constructor<T>`
 
 ```ts
-const NewableClass = AbstractClass as any as Constructor<AbstractClass>
+const NewableClass = PrivateConstructorClass as any as Constructor<PrivateConstructorClass>
 const instance = new NewableClass()
 ```
 
