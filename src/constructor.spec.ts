@@ -2,12 +2,15 @@
 
 import {
   test,
+  AssertEqual,
 }               from 'tstest'
 
 import { FixtureClass } from '../tests/fixtures/fixture-class.js'
 
-import type { Constructor } from './constructor.js'
-import { constructor }      from './constructor.js'
+import type {
+  Constructor,
+  // constructor,
+}                   from './constructor.js'
 
 test('Constructor<TYPE> smoke testing', async t => {
   type TYPE = typeof FixtureClass & Constructor<FixtureClass>
@@ -22,16 +25,22 @@ test('Constructor<TYPE> smoke testing', async t => {
   t.equal(instance.sum(), 3, 'should sum right for 1 + 2')
 })
 
-test('constructor(PrivateConstructor)', async t => {
-
-  class PrivateConstructor {
+test('Constructor<T> with private constructor class', async t => {
+  /**
+   * Issue #55
+   *  https://github.com/huan/clone-class/issues/55
+   */
+  class PrivateConstructorClass {
 
     private constructor () {}
 
   }
 
-  const Ctor = constructor(PrivateConstructor)
-  const instance = new Ctor()
+  const C = PrivateConstructorClass as any as Constructor<PrivateConstructorClass>
 
-  t.ok(instance instanceof Ctor, 'should be able to use private constructor')
+  const c = new C()
+  t.ok(c, 'should be able to instanciate')
+
+  const typeTest: AssertEqual<typeof c, PrivateConstructorClass> = true
+  t.ok(typeTest, 'should be same after constructor')
 })

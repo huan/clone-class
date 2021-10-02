@@ -19,10 +19,14 @@
  *   limitations under the License.
  *
  */
-import { test } from 'tstest'
+import {
+  test,
+  AssertEqual,
+}               from 'tstest'
 
 import { FileBox } from 'file-box'
 
+import type { Constructor } from './constructor'
 import { looseInstanceOfClass } from './loose-instance-of-class.js'
 
 test('looseInstanceOfClass: instanceof', async t => {
@@ -103,7 +107,9 @@ test('looseInstanceOfClass for private constructor', async t => {
 
   }
 
-  const looseInstanceOfPrivateConstructorClass = looseInstanceOfClass(PrivateConstructorClass)
+  const looseInstanceOfPrivateConstructorClass = looseInstanceOfClass(
+    PrivateConstructorClass as any as Constructor<PrivateConstructorClass >,
+  )
   const instance = PrivateConstructorClass.create()
 
   t.ok(looseInstanceOfPrivateConstructorClass(instance), 'should be able to use private constructor class as parameter')
@@ -114,8 +120,44 @@ test('looseInstanceOfClass for abstract class', async t => {
 
   class ChildClass extends AbstractClass {}
 
-  const looseInstanceOfAbstractClass = looseInstanceOfClass(AbstractClass)
+  const looseInstanceOfAbstractClass = looseInstanceOfClass(
+    AbstractClass as any as Constructor<AbstractClass>,
+  )
   const instance = new ChildClass()
 
   t.ok(looseInstanceOfAbstractClass(instance), 'should be able to use abstract class as parameter')
+})
+
+test('looseInstanceOfClass for type guard', async t => {
+  const box: string | FileBox = {} as any
+
+  const looseInstanceOfFileBox = looseInstanceOfClass(
+    FileBox as any as Constructor<FileBox>,
+  )
+  const typeTest1: AssertEqual<
+    typeof looseInstanceOfFileBox,
+    (o: any) => o is FileBox
+  > = true
+
+  t.ok(typeTest1, 'should get looseInstanceOfFileBox type guard')
+
+  if (looseInstanceOfFileBox(box)) {
+
+    const typeTest2: AssertEqual<
+      typeof box,
+      FileBox
+    > = true
+
+    t.ok(typeTest2, 'should get FileBox type guard')
+
+  } else {
+
+    const typeTest3: AssertEqual<
+      typeof box,
+      string
+    > = true
+
+    t.ok(typeTest3, 'should get string type guard')
+
+  }
 })
