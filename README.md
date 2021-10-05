@@ -1,6 +1,5 @@
 # CLONE CLASS
 
-
 [![NPM Version](https://badge.fury.io/js/clone-class.svg)](https://badge.fury.io/js/clone-class)
 [![Build Status](https://api.travis-ci.com/huan/clone-class.svg?branch=master)](https://travis-ci.com/huan/clone-class)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
@@ -15,10 +14,10 @@ Clone an ES6 Class as Another Class Name for Isolating Class Static Properties.
 Run the following example by:
 
 ```shell
-$ git clone git@github.com:zixia/clone-class.git
-$ cd clone-class
-$ npm install
-$ npm run example
+git clone git@github.com:zixia/clone-class.git
+cd clone-class
+npm install
+npm run example
 ```
 
 ### TypeScript
@@ -90,25 +89,37 @@ We have two APIs for dealing with the classes:
 1. `cloneClass(OriginalClass)`: create a new Class that is `extend` from the `OriginalClass` which can isolate static properties for stored values, and return the new Class. 
 1. `instanceToClass(instance, BaseClass)`: get the Class which had instanciated the `instance`, which is the `BaseClass`, or the child class of `BaseClass`, and return it.
 
-### `cloneClass()`
+### 1. `cloneClass()`
 
 ```ts
-const AnotherClass = cloneClass(OrignalClass)
-const instance = new AnotherClass()
+const GoogleEmployee = cloneClass(Employee)
+const instance = new GoogleEmployee()
+
+assert(instance instanceof GoogleEmployee)
+assert(instance instanceof Employee)
+assert(GoogleEmployee.name === Employee.name, 'Should be the same class name')
 ```
 
-### `instanceToClass()`
+### 2. `instanceToClass()`
 
 ```ts
-const RestoredClass = instanceToClass(instance, OrignalClass)
-assert(RestoredClass === AnotherClass, 'because `instance` was created by `new AnotherClass()`')
+const instance = new GoogleEmployee()
+const RestoredClass = instanceToClass(instance, Employee)
+assert(RestoredClass === GoogleEmployee, 'because `instance` was created by `new GoogleEmployee()`')
 ```
 
-### `Constructor<T>`
+### 3. `Constructor<T>`
 
 ```ts
-const NewableClass: typeof AbstractClass & Constructor<AbstractClass>
+class PrivateConstructorClass {
+  private constructor() {
+    console.info('private constructor called')
+  }
+}
+
+const NewableClass = PrivateConstructorClass as any as Constructor<PrivateConstructorClass>
 const instance = new NewableClass()
+// Output: private constructor called
 ```
 
 It seems useless at first, but if you want to use manage many Child Class for a Abstract Class with typings, then it will be a must have tool.

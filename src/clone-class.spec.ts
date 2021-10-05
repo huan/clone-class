@@ -18,10 +18,8 @@
  *   limitations under the License.
  *
  */
-// tslint:disable:variable-name
 
 import { test } from 'tstest'
-// import * as sinon from 'sinon'
 
 import { FixtureClass } from '../tests/fixtures/fixture-class.js'
 
