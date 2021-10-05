@@ -16,10 +16,15 @@
  */
 /**
  * Huan(202108) version:
+ *
+ * T: the `Class`
+ * P: `typeof Class`
  */
-interface Constructor<T> {
-  new(...args: any[]): T,
-  prototype: T,
+type Constructor<T extends Object, P = any> = {
+  [key in keyof P]: P[key];
+} & {
+  new (...args: any[]): T
+  prototype: T
 }
 
 /**

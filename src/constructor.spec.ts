@@ -44,3 +44,19 @@ test('Constructor<T> with private constructor class', async t => {
   const typeTest: AssertEqual<typeof c, PrivateConstructorClass> = true
   t.ok(typeTest, 'should be same after constructor')
 })
+
+test('class with static methods', async t => {
+  class StaticMethodClass {
+
+    static staticMethod () {}
+    protected constructor () {}
+
+  }
+
+  const C: typeof StaticMethodClass = StaticMethodClass as any as Constructor<
+    StaticMethodClass,
+    typeof StaticMethodClass
+  >
+
+  t.ok(C, 'should be ok')
+})
