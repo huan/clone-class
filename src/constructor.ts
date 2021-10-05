@@ -20,12 +20,23 @@
  * T: the `Class`
  * P: `typeof Class`
  */
-type Constructor<T extends Object, P = any> = {
-  [key in keyof P]: P[key];
-} & {
-  new (...args: any[]): T
-  prototype: T
+
+type ClassInterface<C> = {
+  [key in keyof C]: C[key];
 }
+
+type InstanceInterface <I> = {
+  new (...args: any[]): I
+  prototype: I
+}
+
+type Constructor<I extends Object, C = any> = ClassInterface<C> & InstanceInterface<I>
+
+// type Constructor<T extends Object, R = any> = {
+//   new (...args: any[]): T
+//   prototype: T
+//   a: R
+// }
 
 /**
  * Huan(202109) versino:
