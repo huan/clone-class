@@ -53,10 +53,7 @@ test('class with static methods', async t => {
 
   }
 
-  const C: typeof StaticMethodClass = StaticMethodClass as any as Constructor<
-    StaticMethodClass,
-    typeof StaticMethodClass
-  >
+  const C: typeof StaticMethodClass = StaticMethodClass as any as Constructor<StaticMethodClass, typeof StaticMethodClass>
 
   t.ok(C, 'should be ok')
 })

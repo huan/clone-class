@@ -15,15 +15,16 @@
     "npm": ">=7"
   },
   "scripts": {
+    "build": "tsc && tsc -p tsconfig.cjs.json",
     "clean": "shx rm -fr dist/*",
-    "dist": "npm run clean && tsc && tsc -p tsconfig.cjs.json && npm run fixup && shx cp {README.md,package.json} dist/",
-    "fixup": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
-    "example": "ts-node examples/example.ts",
-    "lint": "npm run lint:es && npm run lint:ts",
-    "lint:ts": "tsc --noEmit",
+    "dist": "npm-run-all clean build dist:commonjs",
+    "dist:commonjs": "jq -n \"{ type: \\\"commonjs\\\" }\" > dist/cjs/package.json",
+    "example": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" node examples/example.ts",
+    "lint": "npm-run-all lint:es lint:ts",
+    "lint:ts": "tsc --isolatedModules --noEmit",
     "lint:es": "eslint --ignore-pattern fixtures/ \"src/**/*.ts\" \"tests/**/*.ts\"",
-    "test": "npm run lint && npm run test:unit",
-    "test:unit": "tap --node-arg=--no-warnings --node-arg=--loader=ts-node/esm \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
+    "test": "npm-run-all lint test:unit",
+    "test:unit": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" tap \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
     "test:pack": "bash -x scripts/npm-pack-testing.sh"
   },
   "repository": {
@@ -47,17 +48,22 @@
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^0.20.2",
     "file-box": "^0.17.12",
+    "npm-run-all": "^4.1.5",
     "shx": "^0.3.3",
-    "tstest": "^0.7.1"
+    "tstest": "^0.7.3"
   },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
   },
   "files": [
-    "dist",
-    "src"
+    "bin/",
+    "dist/",
+    "src/"
   ],
+  "tap": {
+    "check-coverage": false
+  },
   "git": {
     "scripts": {
       "pre-push": "npx git-scripts-pre-push"

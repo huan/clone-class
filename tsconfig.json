@@ -2,9 +2,6 @@
   "extends": "@chatie/tsconfig",
   "compilerOptions": {
     "outDir": "dist/esm",
-    "target": "es2020",
-    "module": "es2020",
-    "moduleResolution": "node",
   },
   "exclude": [
     "node_modules/",
@@ -12,9 +9,7 @@
     "tests/fixtures/",
   ],
   "include": [
-    "app/**/*.ts",
     "bin/*.ts",
-    "bot/**/*.ts",
     "examples/**/*.ts",
     "scripts/**/*.ts",
     "src/**/*.ts",
