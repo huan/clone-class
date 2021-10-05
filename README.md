@@ -154,7 +154,6 @@ Learn more about the full story at Chatie blog: [New Feature: Multi-Instance Sup
 An UseCase of `clone-class` can be found in an article writen by me from Chatie blog, it's also the place where this module comes from. It's Worth to spent some time to have a look if you are interested.
 
 * [New Feature: Multi-Instance Support for Wechaty v0.16(WIP)](https://blog.chatie.io/blessed-twins-bot/)
-
 * [TypeScript 2.1 keyof and Lookup Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html)
 * [TypeScript Evolution](https://blog.mariusschulz.com/series/typescript-evolution)
 * [TypeScript Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
