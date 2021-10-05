@@ -21,7 +21,7 @@
  * P: `typeof Class`
  */
 
-type ClassInterface<C> = {
+export type ClassInterface<C> = {
   [key in keyof C]: C[key];
 }
 
@@ -30,12 +30,17 @@ type InstanceInterface <I> = {
   prototype: I
 }
 
-type Constructor<I extends Object, C = any> = ClassInterface<C> & InstanceInterface<I>
+type Constructor<I extends Object> = InstanceInterface<I>
 
-// type Constructor<T extends Object, R = any> = {
+/**
+ * Huan(202110): TypeError: Cannot read property 'valueDeclaration' of undefined #58
+ *  https://github.com/huan/clone-class/issues/58
+ */
+// type Constructor<I extends Object, C = any> = ClassInterface<C> & InstanceInterface<I>
+
+// type Constructor<T extends Object> = {
 //   new (...args: any[]): T
 //   prototype: T
-//   a: R
 // }
 
 /**
