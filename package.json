@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/huan/clone-class#readme",
   "devDependencies": {
-    "@chatie/eslint-config": "^0.14.1",
+    "@chatie/eslint-config": "^0.16.2",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^0.20.2",
     "cross-env": "^7.0.3",

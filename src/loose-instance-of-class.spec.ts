@@ -26,7 +26,7 @@ import {
 
 import { FileBox } from 'file-box'
 
-import type { Constructor } from './constructor'
+import type { Constructor }     from './constructor.js'
 import { looseInstanceOfClass } from './loose-instance-of-class.js'
 
 test('looseInstanceOfClass: instanceof', async t => {

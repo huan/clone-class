@@ -30,13 +30,15 @@ type InstanceInterface <I> = {
   prototype: I
 }
 
-type Constructor<I extends Object> = InstanceInterface<I>
+type Constructor<I extends {} = {}> = InstanceInterface<I>
 
 /**
  * Huan(202110): TypeError: Cannot read property 'valueDeclaration' of undefined #58
  *  https://github.com/huan/clone-class/issues/58
+ *
+ * - Update Oct 13: `typescript@4.5.0-beta` not fix
  */
-// type Constructor<I extends Object, C = any> = ClassInterface<C> & InstanceInterface<I>
+// type Constructor<I extends {} = {}, C = any> = ClassInterface<C> & InstanceInterface<I>
 
 // type Constructor<T extends Object> = {
 //   new (...args: any[]): T

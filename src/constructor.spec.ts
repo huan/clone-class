@@ -62,3 +62,9 @@ test.skip('class with static methods', async t => {
 
   t.ok(C, 'should be ok')
 })
+
+test('Constructor with default generic setting', async t => {
+  type C = Constructor
+  const typeTest: AssertEqual<C, Constructor> = true
+  t.ok(typeTest, 'should be ok without generic settings "<...>"')
+})
