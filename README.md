@@ -124,6 +124,30 @@ const instance = new NewableClass()
 
 It seems useless at first, but if you want to use manage many Child Class for a Abstract Class with typings, then it will be a must have tool.
 
+### 4. `looseInstanceOfClass(Klass)(target)`
+
+use it to check whether a class instance is:
+
+1. `instanceof` the class `Klass`
+1. `instanceof` the class `Klass`'s child class
+1. the `constructor.name` is the same as the class `Klass`
+
+Usage:
+
+```ts
+looseInstanceOfClass = <C extends Constructor> (Klass: C) => (target: any): target is InstanceType<C>
+```
+
+### 5. `interfaceOfClass(Klass)<Interface>()(target)`
+
+use it to check where a target object has all the same properties from class `Klass`
+
+Usage:
+
+```ts
+interfaceOfClass = <C extends Constructor> (Klass: C) => <I extends {}> () => (target: any): target is I
+```
+
 ## CHANGELOG
 
 ### master v0.10 (Oct 20, 2021)
