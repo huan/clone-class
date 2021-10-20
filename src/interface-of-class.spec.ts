@@ -38,11 +38,7 @@ test('interfaceOfClass() class instance', async t => {
 test('interfaceOfClass() a object with the same properties of the instance', async t => {
   class Test {
 
-    id: string
-
-    constructor () {
-      this.id = 'test'
-    }
+    id () { return 'id' }
 
   }
   interface TestInterface extends Test {}
@@ -76,7 +72,7 @@ test('interfaceOfClass() a object with the same properties of the instance', asy
 test('interfaceOfClass for type guard', async t => {
   class Test {
 
-    id?: string
+    id () { return 'id' }
 
   }
   interface TestInterface extends Test {}
