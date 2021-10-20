@@ -1,6 +1,6 @@
 {
   "name": "clone-class",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Clone an ES6 Class as Another Class Name for Isolating Class Static Properties.",
   "type": "module",
   "exports": {
