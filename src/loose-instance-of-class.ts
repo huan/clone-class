@@ -1,3 +1,5 @@
+import type { Constructor } from './constructor.js'
+
 /**
  * Huan(202011)
  *  Create a `looseInstanceOfClass` to check `FileBox` and `Puppet` instances #2090
@@ -5,51 +7,49 @@
  *
  * `instanceof`: checking by constructor name.
  */
-function looseInstanceOfClass<T extends { new (...args: any): any }> (klass: T) {
-  return (o: any): o is InstanceType<T> => {
-    if (!(o && o.constructor)) {
-      /**
-       * Not a class?
-       */
-      return false
-    }
-
-    if (o instanceof klass) {
-      /**
-       * Singleton Module
-       */
-      return true
-    }
-
-    if (o.constructor.name === klass.name) {
-      /**
-       * Different Module Class with the same name
-       *  with a direct instance class
-       */
-      return true
-    }
-
-    const parent = Reflect.getPrototypeOf(o.constructor.prototype)
-    if (!parent) {
-      /**
-       * No parent class
-       */
-      return false
-    }
-
-    if (parent.constructor.name === klass.name) {
-      /**
-       * Different Module class with the same name
-       *  but the instance is a child class
-       */
-      return true
-    }
-
+const looseInstanceOfClass = <C extends Constructor> (Klass: C) => (target: any): target is InstanceType<C> => {
+  if (!(target && target.constructor)) {
     /**
-     * Not match any of the above
+     * Not a class?
      */
     return false
   }
+
+  if (target instanceof Klass) {
+    /**
+     * Singleton Module
+     */
+    return true
+  }
+
+  if (target.constructor.name === Klass.name) {
+    /**
+     * Different Module Class with the same name
+     *  with a direct instance class
+     */
+    return true
+  }
+
+  const parent = Reflect.getPrototypeOf(target.constructor.prototype)
+  if (!parent) {
+    /**
+     * No parent class
+     */
+    return false
+  }
+
+  if (parent.constructor.name === Klass.name) {
+    /**
+     * Different Module class with the same name
+     *  but the instance is a child class
+     */
+    return true
+  }
+
+  /**
+   * Not match any of the above
+   */
+  return false
 }
 
 export { looseInstanceOfClass }

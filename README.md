@@ -126,7 +126,11 @@ It seems useless at first, but if you want to use manage many Child Class for a 
 
 ## CHANGELOG
 
-### master v0.9 (Aug 26, 2021)
+### master v0.10 (Oct 20, 2021)
+
+1. Add `interfaceOfClass()` method to check whether a object satisfy a class interface.
+
+#### v0.9 (Aug 26, 2021)
 
 1. ESM Support
 2. GitHub Action enabled
