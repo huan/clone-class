@@ -108,3 +108,26 @@ test('interfaceOfClass for type guard', async t => {
 
   }
 })
+
+test('interfaceOfClass() for primitive types', async t => {
+  class TestImpl {
+
+    id () { return 'id' }
+
+  }
+  interface Test extends TestImpl {}
+
+  const interfaceOfTest = interfaceOfClass(TestImpl)<Test>()
+
+  const PRIMITIVE_VALUES = [
+    'string',
+    42,
+    null,
+    undefined,
+    BigInt('432413243214123412341234123412412'),
+  ] as const
+
+  for (const val of PRIMITIVE_VALUES) {
+    t.equal(interfaceOfTest(val), false, 'should get false for primitive values')
+  }
+})
