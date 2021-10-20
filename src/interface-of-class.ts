@@ -15,11 +15,10 @@ const interfaceOfClass = <C extends Constructor> (Klass: C) => {
   const prototypeProperties = Object
     .getOwnPropertyNames(Klass.prototype)
 
-  return <I extends {}> () => (target: any): target is I => {
-
-    return prototypeProperties
-      .every(prop => prop in target)
-  }
+  return <I extends {}> () =>
+    (target: any): target is I =>
+      prototypeProperties
+        .every(prop => prop in target)
 }
 
 export { interfaceOfClass }
