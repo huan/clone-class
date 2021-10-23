@@ -52,7 +52,7 @@ test('looseInstanceOfClass: constructor.name', async t => {
 
 })
 
-test.only('looseInstanceOfClass: n/a', async t => {
+test('looseInstanceOfClass: n/a', async t => {
   class Test {}
   const looseInstanceOfTest = looseInstanceOfClass(Test)
 
