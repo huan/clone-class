@@ -150,7 +150,7 @@ interfaceOfClass = <C extends Constructor> (Klass: C) => <I extends {}> () => (t
 
 ## CHANGELOG
 
-### master v0.10 (Oct 20, 2021)
+### master v1.0 (Oct 20, 2021)
 
 1. Add `interfaceOfClass()` method to check whether a object satisfy a class interface.
 
