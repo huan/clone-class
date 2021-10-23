@@ -27,7 +27,11 @@ import {
 import { interfaceOfClass } from './interface-of-class.js'
 
 test('interfaceOfClass() class instance', async t => {
-  class Test {}
+  class Test {
+
+    foo () { return 'bar' }
+
+  }
   interface TestInterface extends Test {}
 
   const interfaceOfTest = interfaceOfClass(Test)<TestInterface>()
@@ -125,9 +129,24 @@ test('interfaceOfClass() for primitive types', async t => {
     null,
     undefined,
     BigInt('432413243214123412341234123412412'),
+    {},
+    [],
+    true,
+    false,
+    Symbol('test'),
+    NaN,
+    Infinity,
+    -Infinity,
   ] as const
 
   for (const val of PRIMITIVE_VALUES) {
-    t.equal(interfaceOfTest(val), false, 'should get false for primitive values')
+    t.equal(interfaceOfTest(val), false, `should get false for primitive values ${typeof val} "${String(val)}"`)
   }
+})
+
+test('interfaceOfClass() for empty interface', async t => {
+  class Test {}
+  interface TestInterface extends Test {}
+
+  t.throws(() => interfaceOfClass(Test)<TestInterface>(), 'should throw an error for empty interface')
 })

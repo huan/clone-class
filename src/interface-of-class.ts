@@ -14,6 +14,11 @@ const interfaceOfClass = <C extends Constructor> (Klass: C) => {
 
   const prototypeProperties = Object
     .getOwnPropertyNames(Klass.prototype)
+    .filter(property => property !== 'constructor')
+
+  if (prototypeProperties.length === 0) {
+    throw new Error(`${Klass.name} has no prototype properties`)
+  }
 
   return <I extends {}> () =>
     (target: any): target is I => {
