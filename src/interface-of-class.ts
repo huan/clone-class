@@ -12,11 +12,21 @@ const interfaceOfClass = <C extends Constructor> (Klass: C) => {
   // const instance = new Klass()
   // const instanceProperties = Object.getOwnPropertyNames(instance)
 
-  const prototypeProperties = Object
-    .getOwnPropertyNames(Klass.prototype)
-    .filter(property => property !== 'constructor')
+  const propertySet: Set<string> = new Set()
 
-  if (prototypeProperties.length === 0) {
+  let currentPrototype: undefined | {} = Klass.prototype
+
+  while (currentPrototype && currentPrototype !== Object.prototype) {
+    Object
+      .getOwnPropertyNames(currentPrototype)
+      .filter(property => property !== 'constructor')
+      .forEach(prop => propertySet.add(prop))
+    currentPrototype = Object.getPrototypeOf(currentPrototype)
+  }
+
+  // console.info('propertySet:', propertySet)
+
+  if (propertySet.size === 0) {
     throw new Error(`${Klass.name} has no prototype properties`)
   }
 
@@ -24,7 +34,7 @@ const interfaceOfClass = <C extends Constructor> (Klass: C) => {
     (target: any): target is I => {
 
       if (target instanceof Object) {
-        return prototypeProperties
+        return [...propertySet]
           .every(prop => prop in target)
       }
       return false

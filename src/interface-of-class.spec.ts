@@ -150,3 +150,37 @@ test('interfaceOfClass() for empty interface', async t => {
 
   t.throws(() => interfaceOfClass(Test)<TestInterface>(), 'should throw an error for empty interface')
 })
+
+test('interfaceOfClass() for parent/child class', async t => {
+  class Parent {
+
+    parent () { return 'parent' }
+
+  }
+
+  class Child extends Parent {
+
+    child () { return 'child' }
+
+  }
+
+  interface ChildInterface extends Child {}
+
+  const interfaceOfChild = interfaceOfClass(Child)<ChildInterface>()
+
+  const FIXTURES = [
+    [new Child(), true],
+    [new Parent(), false],
+    [{ parent: true }, false],
+    [{ child: true }, false],
+    [{ child: true, parent: true }, true],
+  ] as const
+
+  /* eslint multiline-ternary: off */
+  for (const [target, expected] of FIXTURES) {
+    const type = !(target instanceof Object) ? typeof target
+      : 'constructor' in target ? target.constructor.name
+        : 'object'
+    t.equal(interfaceOfChild(target), expected, `should get ${expected} for ${type} ${JSON.stringify(target)}`)
+  }
+})
