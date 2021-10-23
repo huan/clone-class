@@ -8,18 +8,31 @@ import type { Constructor } from './constructor.js'
  * `instanceof`: checking by constructor name.
  */
 const looseInstanceOfClass = <C extends Constructor> (Klass: C) => (target: any): target is InstanceType<C> => {
-  if (!(target && target.constructor)) {
-    /**
-     * Not a class?
-     */
-    return false
-  }
-
+  /**
+   * Easy way
+   */
   if (target instanceof Klass) {
     /**
      * Singleton Module
      */
     return true
+  }
+
+  /**
+   *
+   * Hard (loose) way
+   *
+   */
+
+  if (!target || typeof target !== 'object') {
+    return false
+  }
+
+  if (typeof target.constructor !== 'function') {
+    /**
+     * Not a class?
+     */
+    return false
   }
 
   if (target.constructor.name === Klass.name) {

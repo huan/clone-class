@@ -52,12 +52,29 @@ test('looseInstanceOfClass: constructor.name', async t => {
 
 })
 
-test('looseInstanceOfClass: n/a', async t => {
+test.only('looseInstanceOfClass: n/a', async t => {
   class Test {}
   const looseInstanceOfTest = looseInstanceOfClass(Test)
 
-  const o = {}
-  t.notOk(looseInstanceOfTest(o), 'should be false for non-Test: {}')
+  const FIXTURES = [
+    {},
+    undefined,
+    [],
+    null,
+    0,
+    NaN,
+    true,
+    false,
+    new Date(),
+    new Error(),
+    new Map(),
+    new Set(),
+    new WeakMap(),
+  ]
+
+  for (const fixture of FIXTURES) {
+    t.notOk(looseInstanceOfTest(fixture), `should be false for ${typeof fixture}: "${fixture}"`)
+  }
 })
 
 test('looseInstanceOfClass for FileBox', async t => {
