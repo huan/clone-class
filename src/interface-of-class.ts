@@ -19,7 +19,8 @@ const interfaceOfClass = <C extends Constructor> (Klass: C) => {
   while (currentPrototype && currentPrototype !== Object.prototype) {
     Object
       .getOwnPropertyNames(currentPrototype)
-      .filter(property => property !== 'constructor')
+      .filter(property => property !== 'constructor') // ignore `constructor`
+      .filter(property => !property.startsWith('_'))  // ignore property names starting with `_`
       .forEach(prop => propertySet.add(prop))
     currentPrototype = Object.getPrototypeOf(currentPrototype)
   }

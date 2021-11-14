@@ -184,3 +184,39 @@ test('interfaceOfClass() for parent/child class', async t => {
     t.equal(interfaceOfChild(target), expected, `should get ${expected} for ${type} ${JSON.stringify(target)}`)
   }
 })
+
+test('interfaceOfClass() a object without some properties starts with `_`', async t => {
+  class Test {
+
+    id () { return 'id' }
+
+    _foo () { return 'bar' }
+
+  }
+  interface TestInterface extends Test {}
+
+  const interfaceOfTest = interfaceOfClass(Test)<TestInterface>()
+  const test = new Test()
+
+  const copy = {
+    ...test,
+  } as any
+
+  Object.getOwnPropertyNames(
+    Object.getPrototypeOf(test),
+  ).forEach(prop => {
+    copy[prop] = test[prop as keyof Test]
+  })
+
+  function NOT_CLASS_CONSTRUCTOR () {}
+  const target = {
+    ...copy,
+    constructor: NOT_CLASS_CONSTRUCTOR,
+  }
+
+  // console.info('target', target)
+  t.ok(interfaceOfTest(target), 'should pass instance validation instance test')
+
+  delete target._foo
+  t.ok(interfaceOfTest(target), 'should be a valid interface if it lack a property starts with `_`')
+})
