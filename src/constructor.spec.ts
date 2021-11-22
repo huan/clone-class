@@ -49,7 +49,7 @@ test('Constructor<T> with private constructor class', async t => {
  * Huan(202110): TypeError: Cannot read property 'valueDeclaration' of undefined #58
  *  https://github.com/huan/clone-class/issues/58
  */
-test.skip('class with static methods', async t => {
+test('class with static methods', async t => {
   class StaticMethodClass {
 
     static staticMethod () {}
@@ -57,9 +57,7 @@ test.skip('class with static methods', async t => {
 
   }
 
-  // const C: typeof StaticMethodClass = StaticMethodClass as any as Constructor<StaticMethodClass, typeof StaticMethodClass>
-  const C: typeof StaticMethodClass = StaticMethodClass as any as Constructor<StaticMethodClass> as any
-
+  const C: typeof StaticMethodClass = StaticMethodClass as any as Constructor<StaticMethodClass, typeof StaticMethodClass>
   t.ok(C, 'should be ok')
 })
 

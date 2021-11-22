@@ -14,12 +14,6 @@
  *  - Types for classes as values in TypeScript
  *      https://2ality.com/2020/04/classes-as-values-typescript.html
  */
-/**
- * Huan(202108) version:
- *
- * T: the `Class`
- * P: `typeof Class`
- */
 
 export type ClassInterface<C> = {
   [key in keyof C]: C[key];
@@ -30,25 +24,16 @@ type InstanceInterface <I> = {
   prototype: I
 }
 
-type Constructor<I extends {} = {}> = InstanceInterface<I>
-
 /**
- * Huan(202110): TypeError: Cannot read property 'valueDeclaration' of undefined #58
- *  https://github.com/huan/clone-class/issues/58
+ * Huan(202108) version:
  *
- * - Update Oct 13: `typescript@4.5.0-beta` not fix
+ * T: the `Class`
+ * P: `typeof Class`
  */
-// type Constructor<I extends {} = {}, C = any> = ClassInterface<C> & InstanceInterface<I>
-
-// type Constructor<T extends Object> = {
-//   new (...args: any[]): T
-//   prototype: T
-// }
-
-/**
- * Huan(202109) versino:
- */
-// type Constructor<T> = Function & { prototype: T }
+ type Constructor<
+  I extends {} = {},
+  C = {}
+> = ClassInterface<C> & InstanceInterface<I>
 
 /**
  * https://github.com/wechaty/wechaty/issues/2090
