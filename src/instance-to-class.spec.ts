@@ -3,9 +3,9 @@
 import { test } from 'tstest'
 
 import { FixtureClass }     from '../tests/fixtures/fixture-class.js'
-import { cloneClass } from './clone-class.js'
 
-import { instanceToClass }  from './instance-to-class.js'
+import { cloneClass }         from './clone-class.js'
+import { instanceToClass }    from './instance-to-class.js'
 
 test('instanceToClass smoke testing', async t => {
   const instance = new FixtureClass(1, 2)
