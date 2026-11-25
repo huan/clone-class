@@ -1,11 +1,9 @@
-
 /**
  * Clone Class for easy savig Information into Static Properties
  * https://github.com/Chatie/wechaty/issues/518
  */
-import type { Constructor } from './constructor.js'
+import type { Constructor } from './constructor.ts'
 
-// tslint:disable-next-line:variable-name
 function cloneClass<T extends Constructor<{}>> (OriginalClass: T): T {
 
   for (const staticProperty in OriginalClass) {
