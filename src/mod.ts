@@ -1,9 +1,9 @@
-import { cloneClass }           from './clone-class.js'
-import { instanceToClass }      from './instance-to-class.js'
-import { interfaceOfClass }     from './interface-of-class.js'
-import { looseInstanceOfClass } from './loose-instance-of-class.js'
-import { VERSION }              from './config.js'
-import type { Constructor }     from './constructor.js'
+import { cloneClass } from './clone-class.ts'
+import { instanceToClass } from './instance-to-class.ts'
+import { interfaceOfClass } from './interface-of-class.ts'
+import { looseInstanceOfClass } from './loose-instance-of-class.ts'
+import { VERSION } from './version.ts'
+import type { Constructor } from './constructor.ts'
 
 export type {
   Constructor,

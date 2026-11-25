@@ -6,10 +6,16 @@ export class FixtureClass {
     this.staticNumber = n
   }
 
+  public i: number
+  public j: number
+
   constructor (
-    public i: number,
-    public j: number,
-  ) {}
+    i: number,
+    j: number,
+  ) {
+    this.i = i
+    this.j = j
+  }
 
   public sum () {
     return this.i + this.j + (this.constructor as any).staticNumber

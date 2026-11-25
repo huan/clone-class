@@ -1,17 +1,6 @@
-import type { Constructor } from './constructor.js'
+import type { Constructor } from './constructor.ts'
 
 const interfaceOfClass = <C extends Constructor> (Klass: C) => {
-  /**
-   * Get properties of a class
-   * @see https://stackoverflow.com/a/40637896/1123955
-   */
-  /**
-   * Huan(202110): we decide not to check the instance properties
-   *  because the instance properties are not always the same as the class properties
-   */
-  // const instance = new Klass()
-  // const instanceProperties = Object.getOwnPropertyNames(instance)
-
   const propertySet: Set<string> = new Set()
 
   let currentPrototype: undefined | {} = Klass.prototype
@@ -24,8 +13,6 @@ const interfaceOfClass = <C extends Constructor> (Klass: C) => {
       .forEach(prop => propertySet.add(prop))
     currentPrototype = Object.getPrototypeOf(currentPrototype)
   }
-
-  // console.info('propertySet:', propertySet)
 
   if (propertySet.size === 0) {
     throw new Error(`${Klass.name} has no prototype properties`)
